@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anthony Gallegos <anthony.bottega.codes@gmail.com> (https://github.com/Anthonyg6)",
+  "license": "ISC"
+}
