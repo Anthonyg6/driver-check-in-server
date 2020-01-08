@@ -54,6 +54,30 @@ app.post("/check-in", (req, res, next) => {
     });
 });
 
+app.delete("/check-in/:id", (req, res, next) => {
+  CheckIn.findOneAndDelete({ _id: req.params.id })
+    .then(() => {
+      res.status(200).json({ message: "Driver Check-In delete" });
+    })
+    .catch(error => {
+      res.status(400).json(error);
+    });
+});
+
+app.get("/check-in/:id", (req, res, next) => {
+  CheckIn.findOne({
+    _id: req.params.id
+  })
+    .then(CheckIn => {
+      res.status(200).json(CheckIn);
+    })
+    .catch(error => {
+      res.status(404).json({
+        error
+      });
+    });
+});
+
 app.use("/check-in", (req, res, next) => {
   CheckIn.find()
     .then(checkIns => {
