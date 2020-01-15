@@ -5,10 +5,13 @@ const router = express.Router();
 
 router.post("/", (req, res, next) => {
   let checkIn = new CheckIn({
+    date: req.body.date,
     driverName: req.body.driverName,
     carrier: req.body.carrier,
     deliveryType: req.body.deliveryType,
-    checkInTime: req.body.checkInTime
+    truckType: req.body.truckType,
+    checkInTime: req.body.checkInTime,
+    checkOutTime: req.body.checkOutTime
   });
   checkIn
     .save()
