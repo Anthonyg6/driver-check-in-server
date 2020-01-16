@@ -3,7 +3,7 @@ const CheckIn = require("../models/check-in");
 
 const router = express.Router();
 
-router.post("/", (req, res, next) => {
+router.post("/", async (req, res, next) => {
   let checkIn = new CheckIn({
     date: req.body.date,
     driverName: req.body.driverName,
