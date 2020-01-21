@@ -3,7 +3,7 @@ const CheckIn = require("../models/check-in");
 
 const router = express.Router();
 
-router.post("/", async (req, res, next) => {
+router.post("", async (req, res, next) => {
   let checkIn = new CheckIn({
     date: req.body.date,
     driverName: req.body.driverName,
@@ -51,16 +51,28 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-router.get("/", (req, res, next) => {
-  CheckIn.find()
-    .then(checkIns => {
+router.get("/", async (req, res) => {
+  try {
+    CheckIn.find().then(checkIns => {
       res.status(200).json(checkIns);
-    })
-    .catch(error => {
-      res.status(400).json({
-        error
-      });
     });
+  } catch (error) {
+    res.status(400).json({
+      error
+    });
+  }
 });
+
+// router.get("/", aysnc (req, res, next) => {
+//   CheckIn.find()
+//     .then(checkIns => {
+//       res.status(200).json(checkIns);
+//     })
+//     .catch(error => {
+//       res.status(400).json({
+//         error
+//       });
+//     });
+// });
 
 module.exports = router;
