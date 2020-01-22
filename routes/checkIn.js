@@ -27,6 +27,20 @@ router.post("", async (req, res, next) => {
     });
 });
 
+router.put("/:id", (req, res, next) => {
+  const checkIn = new CheckIn({
+    _id: req.params.id,
+    checkOutTime: req.body.checkOutTime
+  });
+  CheckIn.updateOne({ _id: req.params.id }, checkIn)
+    .then(() => {
+      res.status(201).json({ message: "Check out time updated successfully" });
+    })
+    .catch(error => {
+      error;
+    });
+});
+
 router.delete("/:id", (req, res, next) => {
   CheckIn.findOneAndDelete({ _id: req.params.id })
     .then(() => {
