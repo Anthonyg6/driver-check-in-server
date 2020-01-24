@@ -77,16 +77,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.get("/", aysnc (req, res, next) => {
-//   CheckIn.find()
-//     .then(checkIns => {
-//       res.status(200).json(checkIns);
-//     })
-//     .catch(error => {
-//       res.status(400).json({
-//         error
-//       });
-//     });
-// });
-
 module.exports = router;
