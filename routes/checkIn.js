@@ -1,7 +1,10 @@
 const express = require("express");
-const CheckIn = require("../models/check-in");
-
 const router = express.Router();
+const app = express();
+const bodyParser = require("body-parser");
+
+const CheckIn = require("../models/check-in");
+app.use(bodyParser.json());
 
 router.post("", async (req, res, next) => {
   let checkIn = new CheckIn({
@@ -11,7 +14,8 @@ router.post("", async (req, res, next) => {
     deliveryType: req.body.deliveryType,
     truckType: req.body.truckType,
     checkInTime: req.body.checkInTime,
-    checkOutTime: req.body.checkOutTime
+    checkOutTime: req.body.checkOutTime,
+    isCheckedIn: req.body.isCheckedIn
   });
   checkIn
     .save()
@@ -30,7 +34,8 @@ router.post("", async (req, res, next) => {
 router.put("/:id", (req, res, next) => {
   const checkIn = new CheckIn({
     _id: req.params.id,
-    checkOutTime: req.body.checkOutTime
+    checkOutTime: req.body.checkOutTime,
+    isCheckedIn: req.body.isCheckedIn
   });
   CheckIn.updateOne({ _id: req.params.id }, checkIn)
     .then(() => {

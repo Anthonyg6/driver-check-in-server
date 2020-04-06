@@ -7,7 +7,8 @@ const checkinSchema = mongoose.Schema({
   deliveryType: { type: String },
   truckType: { type: String },
   checkInTime: { type: String },
-  checkOutTime: { type: String }
+  checkOutTime: { type: String },
+  isCheckedIn: { type: Boolean }
 });
 
 module.exports = mongoose.model("CheckIn", checkinSchema);
