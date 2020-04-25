@@ -1,21 +1,22 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
-// const CheckIn = require("./models/check-in");
+const MONGODB_URI = process.env.MONGODB_URI;
 
 const checkInRoutes = require("./routes/checkIn");
 
 const app = express();
+// "mongodb+srv://AnthonyGallegos:n6hVxRAmH9r6uYg7@cluster0-roxtp.mongodb.net/Check-In?retryWrites=true&w=majority"
+
+// ();
 
 mongoose
-  .connect(
-    "mongodb+srv://AnthonyGallegos:n6hVxRAmH9r6uYg7@cluster0-roxtp.mongodb.net/Check-In?retryWrites=true&w=majority"
-  )
+  .connect(MONGODB_URI)
   .then(() => {
     console.log("Connected To MongoDB");
   })
-  .catch(error => {
+  .catch((error) => {
     console.log("What MongoDB am I supposed to connect too?");
     console.error(error);
   });
@@ -34,6 +35,5 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
-
 app.use("/check-in", checkInRoutes);
 module.exports = app;

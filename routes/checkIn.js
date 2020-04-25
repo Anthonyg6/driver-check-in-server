@@ -15,18 +15,18 @@ router.post("", async (req, res, next) => {
     truckType: req.body.truckType,
     checkInTime: req.body.checkInTime,
     checkOutTime: req.body.checkOutTime,
-    isCheckedIn: req.body.isCheckedIn
+    isCheckedIn: req.body.isCheckedIn,
   });
   checkIn
     .save()
     .then(() => {
       res.status(201).json({
-        message: "New Driver Check In post has been created!"
+        message: "New Driver Check In post has been created!",
       });
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(400).json({
-        error
+        error,
       });
     });
 });
@@ -35,13 +35,13 @@ router.put("/:id", (req, res, next) => {
   const checkIn = new CheckIn({
     _id: req.params.id,
     checkOutTime: req.body.checkOutTime,
-    isCheckedIn: req.body.isCheckedIn
+    isCheckedIn: req.body.isCheckedIn,
   });
   CheckIn.updateOne({ _id: req.params.id }, checkIn)
     .then(() => {
       res.status(201).json({ message: "Check out time updated successfully" });
     })
-    .catch(error => {
+    .catch((error) => {
       error;
     });
 });
@@ -51,33 +51,33 @@ router.delete("/:id", (req, res, next) => {
     .then(() => {
       res.status(200).json({ message: "Driver Check-In delete" });
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(400).json(error);
     });
 });
 
 router.get("/:id", (req, res, next) => {
   CheckIn.findOne({
-    _id: req.params.id
+    _id: req.params.id,
   })
-    .then(CheckIn => {
+    .then((CheckIn) => {
       res.status(200).json(CheckIn);
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(404).json({
-        error
+        error,
       });
     });
 });
 
 router.get("/", async (req, res) => {
   try {
-    CheckIn.find().then(checkIns => {
+    CheckIn.find().then((checkIns) => {
       res.status(200).json(checkIns);
     });
   } catch (error) {
     res.status(400).json({
-      error
+      error,
     });
   }
 });
