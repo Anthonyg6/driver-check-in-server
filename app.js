@@ -7,12 +7,9 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const checkInRoutes = require("./routes/checkIn");
 
 const app = express();
-// "mongodb+srv://AnthonyGallegos:n6hVxRAmH9r6uYg7@cluster0-roxtp.mongodb.net/Check-In?retryWrites=true&w=majority"
-
-// ();
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(MONGODB_URI, { useNewUrlParser: true })
   .then(() => {
     console.log("Connected To MongoDB");
   })
