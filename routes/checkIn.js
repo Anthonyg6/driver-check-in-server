@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const app = express();
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
+app.use(cors());
 
 const CheckIn = require("../models/check-in");
 app.use(bodyParser.json());
