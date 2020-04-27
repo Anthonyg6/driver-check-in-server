@@ -4,9 +4,12 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const MONGODB_URI = process.env.MONGODB_URI;
 
+const cors = require("cors");
+
 const checkInRoutes = require("./routes/checkIn");
 
 const app = express();
+app.use(cors());
 
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true })
