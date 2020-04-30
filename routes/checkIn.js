@@ -9,7 +9,7 @@ app.use(cors());
 const CheckIn = require("../models/check-in");
 app.use(bodyParser.json());
 
-router.post("", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   let checkIn = new CheckIn({
     date: req.body.date,
     driverName: req.body.driverName,
