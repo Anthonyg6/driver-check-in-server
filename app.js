@@ -1,17 +1,21 @@
 require("dotenv").config();
-import { json } from "body-parser";
-import { connect } from "mongoose";
 
-import cors from "cors";
-
-import checkInRoutes from "./routes/checkIn";
 const express = require("express");
-const MONGODB_URI = process.env.MONGODB_URI;
-
 const app = express();
-app.use(cors());
+const cors = require("cors");
+const mongoose = require("mongoose");
 
-connect(MONGODB_URI)
+const MONGODB_URI = process.env.MONGODB_URI;
+const bodyParser = require("body-parser");
+
+const checkInRoutes = require("./routes/checkIn");
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use("/check-in", checkInRoutes);
+
+mongoose
+  .connect(MONGODB_URI)
   .then(() => {
     console.log("Connected To MongoDB");
   })
@@ -33,6 +37,4 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(json());
-app.use("/check-in", checkInRoutes);
-export default app;
+module.exports = app;
