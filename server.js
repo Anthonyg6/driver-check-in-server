@@ -1,5 +1,5 @@
 const http = require("http");
-const app = require("./app");
+const app = require("./app").default;
 const cors = require("cors");
 
 app.use(cors());

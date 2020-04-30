@@ -1,11 +1,11 @@
 require("dotenv").config();
-import express from "express";
 import { json } from "body-parser";
 import { connect } from "mongoose";
 
 import cors from "cors";
 
 import checkInRoutes from "./routes/checkIn";
+const express = require("express");
 const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
