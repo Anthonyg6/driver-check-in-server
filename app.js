@@ -15,7 +15,9 @@ app.use(bodyParser.json());
 app.use("/check-in", checkInRoutes);
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(
+    "mongodb+srv://AnthonyGallegos:n6hVxRAmH9r6uYg7@cluster0-roxtp.mongodb.net/Check-In?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("Connected To MongoDB");
   })
