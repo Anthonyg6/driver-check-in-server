@@ -11,8 +11,6 @@ const bodyParser = require("body-parser");
 const checkInRoutes = require("./routes/checkIn");
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use("/check-in", checkInRoutes);
 
 mongoose
   .connect(
@@ -38,5 +36,7 @@ app.use((req, res, next) => {
   );
   next();
 });
+app.use(bodyParser.json());
+app.use("/check-in", checkInRoutes);
 
 module.exports = app;
