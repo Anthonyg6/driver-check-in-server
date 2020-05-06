@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "nodemon --watch src src/server.js"
   },
   "author": "Anthony Gallegos <anthony.bottega.codes@gmail.com> (https://github.com/Anthonyg6)",
   "license": "ISC",
