@@ -9,7 +9,7 @@ app.use(cors());
 const CheckIn = require("../models/check-in");
 app.use(bodyParser.json());
 
-router.post("/", async (req, res, next) => {
+router.post("/check-ins", async (req, res, next) => {
   let checkIn = new CheckIn({
     date: req.body.date,
     driverName: req.body.driverName,
@@ -34,7 +34,7 @@ router.post("/", async (req, res, next) => {
     });
 });
 
-router.put("/:id", (req, res, next) => {
+router.put("/check-ins/:id", (req, res, next) => {
   const checkIn = new CheckIn({
     _id: req.params.id,
     checkOutTime: req.body.checkOutTime,
@@ -49,7 +49,7 @@ router.put("/:id", (req, res, next) => {
     });
 });
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/check-ins/:id", (req, res, next) => {
   CheckIn.findOneAndDelete({ _id: req.params.id })
     .then(() => {
       res.status(200).json({ message: "Driver Check-In delete" });
@@ -59,7 +59,7 @@ router.delete("/:id", (req, res, next) => {
     });
 });
 
-router.get("/:id", (req, res, next) => {
+router.get("/check-ins/:id", (req, res, next) => {
   CheckIn.findOne({
     _id: req.params.id,
   })
@@ -73,7 +73,7 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-router.get("/", async (req, res) => {
+router.get("/check-ins", async (req, res) => {
   try {
     CheckIn.find().then((checkIns) => {
       res.status(200).json(checkIns);
