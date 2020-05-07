@@ -3,19 +3,19 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const mongoose = require("mongoose");
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const bodyParser = require("body-parser");
 
 const checkInRoutes = require("./routes/checkIn");
+const mongoose = require("mongoose");
 
 app.use(cors());
+app.use(bodyParser.json());
+app.use("/check-in", checkInRoutes);
 
 mongoose
-  .connect(
-    "mongodb+srv://AnthonyGallegos:n6hVxRAmH9r6uYg7@cluster0-roxtp.mongodb.net/Check-In?retryWrites=true&w=majority"
-  )
+  .connect(MONGODB_URI)
   .then(() => {
     console.log("Connected To MongoDB");
   })
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
   );
   next();
 });
-app.use(bodyParser.json());
-app.use("/check-in", checkInRoutes);
+// app.use(bodyParser.json());
+// app.use("/check-in", checkInRoutes);
 
 module.exports = app;
