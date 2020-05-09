@@ -10,7 +10,12 @@ const bodyParser = require("body-parser");
 const checkInRoutes = require("./routes/checkIn");
 const mongoose = require("mongoose");
 
-app.use(cors());
+corsOptions = {
+  origin: "https://driver-check-in.herokuapp.com",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use("/check-in", checkInRoutes);
 
@@ -36,7 +41,5 @@ app.use((req, res, next) => {
   );
   next();
 });
-// app.use(bodyParser.json());
-// app.use("/check-in", checkInRoutes);
 
 module.exports = app;
