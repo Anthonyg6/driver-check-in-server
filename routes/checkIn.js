@@ -73,7 +73,7 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-router.get("/", async (req, res) => {
+router.get("/", (req, res) => {
   try {
     CheckIn.find().then((checkIns) => {
       res.status(200).json(checkIns);
