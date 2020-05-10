@@ -15,7 +15,7 @@ const mongoose = require("mongoose");
 
 corsOptions = {
   allowedHeaders: ["Access-Control-Allow-Origin"],
-  origin: "https://driver-check-in.herokuapp.com",
+  origin: ["https://driver-check-in.herokuapp.com", "http://localhost:3000"],
   optionsSuccessStatus: 200,
 };
 
@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use("/check-in", checkInRoutes);
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected To MongoDB");
   })
