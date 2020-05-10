@@ -33,6 +33,7 @@ mongoose
     console.error(error);
   });
 
+/*
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -45,5 +46,6 @@ app.use((req, res, next) => {
   );
   next();
 });
+*/
 
 module.exports = app;
