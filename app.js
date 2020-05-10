@@ -14,7 +14,7 @@ const checkInRoutes = require("./routes/checkIn");
 const mongoose = require("mongoose");
 
 corsOptions = {
-  allowedHeaders: ["Access-Control-Allow-Origin"],
+  allowedHeaders: ["Access-Control-Allow-Origin", "Content-Type"],
   origin: ["https://driver-check-in.herokuapp.com", "http://localhost:3000"],
   optionsSuccessStatus: 200,
 };
@@ -40,6 +40,7 @@ mongoose.connect(
   }
 );
 
+/*
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -52,5 +53,6 @@ app.use((req, res, next) => {
   );
   next();
 });
+*/
 
 module.exports = app;
