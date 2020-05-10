@@ -11,6 +11,7 @@ const checkInRoutes = require("./routes/checkIn");
 const mongoose = require("mongoose");
 
 corsOptions = {
+  allowedHeaders: ["Access-Control-Allow-Origin"],
   origin: "https://driver-check-in.herokuapp.com",
   optionsSuccessStatus: 200,
 };
