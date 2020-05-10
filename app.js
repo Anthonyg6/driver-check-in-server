@@ -1,3 +1,6 @@
+// SSE (Server sent Events)
+// WSS (websockets for real time messages) Socket.IO
+// DB Triggers (db sends message and fires a function)
 require("dotenv").config();
 
 const express = require("express");
