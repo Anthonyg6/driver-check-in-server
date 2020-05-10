@@ -21,17 +21,21 @@ corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
+
 app.use("/check-in", checkInRoutes);
 
-mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("Connected To MongoDB");
-  })
-  .catch((error) => {
-    console.log("What MongoDB am I supposed to connect too?");
-    console.error(error);
-  });
+mongoose.connect(
+  MONGODB_URI,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    try {
+      console.log("Connected To MongoDB");
+    } catch (err) {
+      console.log("What MongoDB am I supposed to connect too?");
+      console.error(error);
+    }
+  }
+);
 
 /*
 app.use((req, res, next) => {
