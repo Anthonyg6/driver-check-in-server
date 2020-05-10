@@ -22,6 +22,9 @@ corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
+app.get("/", (req, res) => {
+  return res.status(200).send("<h1>Driver Check In API</h1>");
+});
 app.use("/check-in", checkInRoutes);
 
 mongoose.connect(
