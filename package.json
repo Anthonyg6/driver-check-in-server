@@ -13,6 +13,7 @@
   "author": "Anthony Gallegos <anthony.bottega.codes@gmail.com> (https://github.com/Anthonyg6)",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

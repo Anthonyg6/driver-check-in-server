@@ -11,22 +11,17 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const bodyParser = require("body-parser");
 
 const checkInRoutes = require("./routes/checkIn");
+const userRoutes = require("./routes/user");
 const mongoose = require("mongoose");
 
-// corsOptions = {
-//   allowedHeaders: ["Access-Control-Allow-Origin", "Content-Type"],
-//   origin: ["https://driver-check-in.herokuapp.com", "http://localhost:3000"],
-//   optionsSuccessStatus: 200,
-// };
-
-// app.use(cors(corsOptions));
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  return res.status(200).send("<h1>Driver Check In API</h1>");
-});
+// app.get("/", (req, res) => {
+//   return res.status(200).send("<h1>Driver Check In API</h1>");
+// });
 app.use("/check-in", checkInRoutes);
+app.use("/auth", userRoutes);
 
 mongoose.connect(
   MONGODB_URI,
